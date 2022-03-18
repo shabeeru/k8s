@@ -1,0 +1,30 @@
+## create pvc and pod.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ceph-rbd-sc-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: ceph-rbd-sc
+---    
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ceph-rbd-pod-pvc-sc
+spec:
+  containers:
+  - name:  ceph-rbd-pod-pvc-sc
+    image: busybox
+    command: ["sleep", "infinity"]
+    volumeMounts:
+    - mountPath: /mnt/ceph_rbd
+      name: volume
+  volumes:
+  - name: volume
+    persistentVolumeClaim:
+      claimName: ceph-rbd-sc-pvc
