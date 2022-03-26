@@ -6,7 +6,7 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: rbd.csi.ceph.com
 parameters:
-  clusterID: 5456d770-d309-4f80-9226-df3296e899ed
+  clusterID: 0bf7c358-25e1-11ec-ae02-52540000fa0f
   pool: kubePool
   imageFeatures: layering
   csi.storage.k8s.io/provisioner-secret-name: ceph-admin

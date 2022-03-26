@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
+  namespace: hollowapp
   name: mysql
 spec:
   selector:
@@ -15,7 +16,7 @@ spec:
     spec:
       initContainers:
       - name: init-mysql
-        image: mysql:5.7
+        image: quay.io/bitnami/mysql:5.7
         command:
         - bash
         - "-c"
@@ -63,7 +64,7 @@ spec:
           mountPath: /etc/mysql/conf.d
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: quay.io/bitnami/mysql:5.7
         env:
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "1"

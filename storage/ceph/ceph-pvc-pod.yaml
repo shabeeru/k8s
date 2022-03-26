@@ -4,6 +4,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: ceph-rbd-sc-pvc
+  namespace: volumes
 spec:
   accessModes:
     - ReadWriteOnce
@@ -16,6 +17,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: ceph-rbd-pod-pvc-sc
+  namespace: volumes
 spec:
   containers:
   - name:  ceph-rbd-pod-pvc-sc
